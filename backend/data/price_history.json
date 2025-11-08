@@ -1,0 +1,92 @@
+[
+  {
+    "query": "milk",
+    "timestamp": "2025-11-08T09:26:33.216Z",
+    "results": [
+      {
+        "items": []
+      },
+      {
+        "items": []
+      },
+      {
+        "items": []
+      },
+      {
+        "items": []
+      }
+    ]
+  },
+  {
+    "query": "eggs",
+    "timestamp": "2025-11-08T09:26:40.612Z",
+    "results": [
+      {
+        "items": []
+      },
+      {
+        "items": []
+      },
+      {
+        "items": []
+      },
+      {
+        "items": []
+      }
+    ]
+  },
+  {
+    "query": "chocolate",
+    "timestamp": "2025-11-08T09:26:45.670Z",
+    "results": [
+      {
+        "items": []
+      },
+      {
+        "items": []
+      },
+      {
+        "items": []
+      },
+      {
+        "items": []
+      }
+    ]
+  },
+  {
+    "query": "Cadbury Dairy Milk Chocolate Block | 180g",
+    "timestamp": "2025-11-08T09:27:09.836Z",
+    "results": [
+      {
+        "items": []
+      },
+      {
+        "items": []
+      },
+      {
+        "items": []
+      },
+      {
+        "items": []
+      }
+    ]
+  },
+  {
+    "query": "milk",
+    "timestamp": "2025-11-08T09:28:12.916Z",
+    "results": [
+      {
+        "items": []
+      },
+      {
+        "items": []
+      },
+      {
+        "items": []
+      },
+      {
+        "items": []
+      }
+    ]
+  }
+]
