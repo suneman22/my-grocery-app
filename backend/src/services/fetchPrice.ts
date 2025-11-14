@@ -15,7 +15,7 @@ export async function fetchPrice(product: string, store: string): Promise<string
 
     switch (store) {
       case "coles":
-        url = "https://coles-product-price-api.p.rapidapi.com/product";
+        url = "https://coles-product-price-api.p.rapidapi.com/coles/product-search/";
         headers = {
           "X-RapidAPI-Key": API_KEYS.coles,
           "X-RapidAPI-Host": "coles-product-price-api.p.rapidapi.com",
@@ -24,7 +24,7 @@ export async function fetchPrice(product: string, store: string): Promise<string
         break;
 
       case "woolworths":
-        url = "https://woolworths-products-api.p.rapidapi.com/products";
+        url = "https://woolworths-products-api.p.rapidapi.com/woolworths/product-search/";
         headers = {
           "X-RapidAPI-Key": API_KEYS.woolworths,
           "X-RapidAPI-Host": "woolworths-products-api.p.rapidapi.com",
@@ -33,10 +33,10 @@ export async function fetchPrice(product: string, store: string): Promise<string
         break;
 
       case "aldi":
-        url = "https://ultimate-aldi-api2.p.rapidapi.com/search";
+        url = "https://aldi-supermarket-scraper-api.p.rapidapi.com/search";
         headers = {
           "X-RapidAPI-Key": API_KEYS.aldi,
-          "X-RapidAPI-Host": "ultimate-aldi-api2.p.rapidapi.com",
+          "X-RapidAPI-Host": "aldi-supermarket-scraper-api.p.rapidapi.com",
         };
         params = { keyword: product };
         break;
@@ -62,9 +62,9 @@ export async function fetchPrice(product: string, store: string): Promise<string
       case "coles":
         return response.data?.[0]?.price || "N/A";
       case "woolworths":
-        return response.data?.[0]?.Products?.[0]?.Price || "N/A";
-      case "aldi":
         return response.data?.products?.[0]?.price || "N/A";
+      case "aldi":
+        return response.data?.results?.[0]?.price || "N/A";
       case "iga":
         return response.data?.results?.[0]?.price || "N/A";
       default:

@@ -1,23 +1,39 @@
 import express from "express";
-import { fetchPrice } from "../services/fetchPrice.ts";
+import { fetchPrice } from "../services/fetchPrice";
+import { searchColes } from "../services/coles";
+import { searchWoolworths } from "../services/woolworths";
+import { searchAldi } from "../services/aldi";
+import { searchIGA } from "../services/iga";
 
 const router = express.Router();
 
-router.get("/", async (req, res) => {
-  const product = req.query.product as string;
 
-  if (!product) {
-    return res.status(400).json({ error: "Missing product query parameter" });
+
+// NEW ADVANCED ROUTE
+router.get("/price", async (req, res) => {
+  const { product } = req.query;
+
+  console.log("🔍 Price request received for:", product);
+
+  try {
+    const env = process.env as Record<string, string>;
+
+    const coles = await searchColes(product as string, env);
+    const aldi = await searchAldi(product as string, env);
+    const woolworths = await searchWoolworths(product as string, env);
+    const iga = await searchIGA(product as string, env);
+
+    console.log("Prices fetched:", { coles, woolworths, aldi, iga });
+
+    res.json({
+      product,
+      prices: { coles, woolworths, aldi, iga },
+    });
+
+  } catch (err) {
+    console.error("❌ Backend price error:", err);
+    res.status(500).json({ error: "Price fetch failed" });
   }
-
-  const stores = ["coles", "woolworths", "aldi", "iga"];
-  const results: Record<string, string> = {};
-
-  for (const store of stores) {
-    results[store] = await fetchPrice(product, store);
-  }
-
-  res.json(results);
 });
 
 export default router;
